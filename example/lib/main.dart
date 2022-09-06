@@ -18,7 +18,6 @@ class MyApp extends StatelessWidget {
       ),
       builder: (context, child) {
         SPAdapter.initWidth(375, MediaQuery.of(context).size.width);
-        print(MediaQuery.of(context).size.width);
         return MediaQuery(
           data: MediaQuery.of(context).copyWith(
             textScaleFactor: 1.0,
