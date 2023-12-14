@@ -1,10 +1,10 @@
 name: sp_adapter
 description: Screen adaptation. Make UI scale proportionally on different screen sizes.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/Jokergz/sp_adapter
 environment:
-  sdk: '>=2.18.0 <3.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.2.3 <4.0.0'
+  flutter: '>=1.17.0'
 dependencies:
   flutter:
     sdk: flutter

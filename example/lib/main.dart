@@ -11,22 +11,27 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      builder: (context, child) {
-        SPAdapter.initWidth(375, MediaQuery.of(context).size.width);
-        return MediaQuery(
-          data: MediaQuery.of(context).copyWith(
-            textScaleFactor: 1.0,
+    return LayoutBuilder(builder: ((context, constraints) {
+      if (constraints.maxWidth != 0) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
           ),
-          child: child!,
+          builder: (context, child) {
+            SPAdapter.initWidth(375, MediaQuery.of(context).size.width);
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaler: TextScaler.noScaling,
+              ),
+              child: child!,
+            );
+          },
+          home: const MyHomePage(title: 'Flutter Demo Home Page'),
         );
-      },
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+      }
+      return Container();
+    }));
   }
 }
 

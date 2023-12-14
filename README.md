@@ -9,7 +9,6 @@ First, determine the size of the design draft and adapt it according to the widt
 
 ### Add dependency
 
-
 ```yaml
 dependencies:
   flutter:
@@ -23,18 +22,24 @@ dependencies:
 ```dart
 import 'package:sp_adapter/sp_adapter.dart';
 
-MaterialApp(
-  ...
-  builder: (context, child) {
-    /// Check the size of the design draft, such as 375
-    SPAdapter.initWidth(375, MediaQuery.of(context).size.width);
-    return MediaQuery(
-      data: MediaQuery.of(context).copyWith(
-        textScaleFactor: 1.0, // Do not scale fonts with the system
-      ),
-      child: child!,
+LayoutBuilder(builder: (context, constraints) {
+  if (constraints.maxWidth != 0) {
+    return MaterialApp(
+      ...
+      builder: (context, child) {
+        /// Check the size of the design draft, such as 375
+        SPAdapter.initWidth(375, MediaQuery.of(context).size.width);
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaler: TextScaler.noScaling, // Do not scale fonts with the system
+          ),
+          child: child!,
+        );
+      }
     );
-  ...
+  }
+  return Container();
+});
 
 ```
 
